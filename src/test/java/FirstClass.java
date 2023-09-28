@@ -3,4 +3,5 @@ public class FirstClass {
     int b;
     int c;
     int d;
+    int e;
 }
