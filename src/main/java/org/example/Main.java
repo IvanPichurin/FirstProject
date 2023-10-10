@@ -26,16 +26,39 @@ public class Main {
 
        email.sendKeys("ivan.pichurin@gmail.com");
 
-        WebElement CurrentAddress = driver.findElement(By.xpath("//input[@id='currenAddress']"));
+        WebElement CurrentAddress = driver.findElement(By.id("currentAddress"));
 
-        CurrentAddress.sendKeys("123");
+        CurrentAddress.sendKeys("Kursk");
 
 
-        WebElement PermanentAddress = driver.findElement(By.xpath("//input[@id='permanentAddress']"));
+        WebElement PermanentAddress = driver.findElement(By.id("permanentAddress"));
 
-        PermanentAddress.sendKeys("ivan.pichurin@gmail.com");
+        PermanentAddress.sendKeys("Ponyri");
 
-        WebElement button = driver.findElement(By.xpath("//button[@id='btn btn-primary']"));
-button.click();
+        WebElement button = driver.findElement(By.xpath("//button[@id='submit']"));
+        button.click();
+
+        String name;
+        WebElement UserNameOutput = driver.findElement(By.xpath("//p[@id='name']"));
+        name = UserNameOutput.getText();
+
+         String email2;
+        WebElement EmailOutput = driver.findElement(By.xpath("//p[@id='email']"));
+        email2 = EmailOutput.getText();
+
+        String CurrAddr;
+        WebElement CurrAddrOutput = driver.findElement(By.xpath("//p[@id='currentAddress']"));
+        CurrAddr = CurrAddrOutput.getText();
+
+        String PermAddr;
+        WebElement PermAddrOutput = driver.findElement(By.xpath("//p[@id='permanentAddress']"));
+        PermAddr = PermAddrOutput.getText();
+
+
+        System.out.println(name +" " + email2+ " "+ CurrAddr+ " "+ PermAddr);
+
+
+
+
     }
 }

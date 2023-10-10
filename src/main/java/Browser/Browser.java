@@ -1,0 +1,41 @@
+package Browser;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.time.Duration;
+
+import static Browser.Config.BROWSER_TYPE;
+import static Constants.Constants.TimeoutVariable.IMPLICIT_WAIT;
+
+public class Browser {
+
+    public static WebDriver driver;
+    public static WebDriver createDriver(){
+
+        switch (BROWSER_TYPE){
+
+            case "chrome":
+                System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\drivers\\chromedriver.exe");
+                driver = new ChromeDriver();
+            break;
+
+            case "firefox":
+                System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\drivers\\geckodriver.exe");
+                driver = new FirefoxDriver();
+                break;
+
+            default:
+                System.out.println("incorrect platform or browser name: "+ BROWSER_TYPE);
+
+        }
+
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT));
+        driver.manage().window().maximize();
+        return driver;
+
+    }
+
+}
